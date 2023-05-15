@@ -1,7 +1,4 @@
 #!/usr/bin/python3
-"""
-Class CommandConsole for Airbnb
-"""
 import cmd
 import sys
 from datetime import datetime
@@ -86,7 +83,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** instance id missing **")
         else:
             print("** class doesn't exist **")
-
+    
     def do_all(self, arg):
         """Prints all string representation of all instances
             based or not on the class name."""
@@ -147,6 +144,7 @@ class HBNBCommand(cmd.Cmd):
         "count instances of the class"
 
         cmd_line = arg.split()
+
         if cmd_line[0] not in allowed_class:
             return
         else:
