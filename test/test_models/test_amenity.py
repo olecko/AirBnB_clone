@@ -1,10 +1,7 @@
 #!/usr/bin/python3
 """Test User Class - Comproving expectect outputs and documentation
 """
-<<<<<<< HEAD
-=======
 
->>>>>>> c0468ff8e49bdfade83cea54116ee7827bea2566
 from datetime import datetime
 import models
 import pep8
@@ -36,17 +33,13 @@ class TestDocs(unittest.TestCase):
 
     def test_module_docstring(self):
         """Test for the existence of module docstring"""
-        self.assertIsNot(mod_doc, None,
-                         "base_model.py needs a docstring")
-        self.assertTrue(len(mod_doc) > 1,
-                        "base_model.py needs a docstring")
+        self.assertIsNot(mod_doc, None, "base_model.py needs a docstring")
+        self.assertTrue(len(mod_doc) > 1, "base_model.py needs a docstring")
 
     def test_dosctring(self):
         """Testing documentation"""
-        self.assertIsNot(mod_doc, None,
-                         "base_model.py needs a doctring")
-        self.assertTrue(len(mod_doc) > 1,
-                        "base_model.py needs a docstring")
+        self.assertIsNot(mod_doc, None, "base_model.py needs a doctring")
+        self.assertTrue(len(mod_doc) > 1, "base_model.py needs a docstring")
 
 
 class TestBaseModel(unittest.TestCase):
@@ -80,12 +73,8 @@ class TestBaseModel(unittest.TestCase):
         created_at = datetime.now()
         instance1 = Amenity()
         updated_at = datetime.now()
-<<<<<<< HEAD
-        self.assertEqual(created_at <= instance1.created_at <= updated_at, True)
-=======
-        self.assertEqual(created_at <= instance1.created_at
-                         <= updated_at, True)
->>>>>>> c0468ff8e49bdfade83cea54116ee7827bea2566
+        self.assertEqual(created_at <= instance1.created_at <= updated_at,
+                         True)
         time.sleep(1)
         created_at = datetime.now()
         instance2 = Amenity()
@@ -107,16 +96,11 @@ class TestBaseModel(unittest.TestCase):
 
     def test_dictionary(self):
         """testing to_dict correct funtionality"""
-        """Testing that object is correctly created"""
         instance3 = Amenity()
         self.assertIs(type(instance3), Amenity)
         instance3.name = "Holbies foravaaaa"
         new_inst = instance3.to_dict()
-        expectec_attrs = ["id",
-                          "created_at",
-                          "updated_at",
-                          "name",
-                          "__class__"]
+        expectec_attrs = ["id", "created_at", "updated_at", "name", "__class__"]
         self.assertCountEqual(new_inst.keys(), expectec_attrs)
         self.assertEqual(new_inst['__class__'], 'Amenity')
         self.assertEqual(new_inst['name'], 'Holbies foravaaaa')
