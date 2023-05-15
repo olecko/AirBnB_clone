@@ -1,15 +1,28 @@
 #!/usr/bin/python3
+<<<<<<< HEAD
+"""
+Test BaseModel- Comproving expectect outputs and documentation
+"""
+from datetime import datetime
+import time
+import unittest
+=======
 """Test BaseModel- Comproving expectect outputs and documentation"""
 from datetime import datetime
 import time
 import unittest
 # from pep8 import pycodestyle
+>>>>>>> c0468ff8e49bdfade83cea54116ee7827bea2566
 import models
 import inspect
 from unittest import mock
 
 BaseModel = models.base_model.BaseModel
+<<<<<<< HEAD
+mod_doc = BaseModel.__doc__
+=======
 mod_doc = models.base_model.__doc__
+>>>>>>> c0468ff8e49bdfade83cea54116ee7827bea2566
 
 
 class TestDocs(unittest.TestCase):
@@ -19,6 +32,8 @@ class TestDocs(unittest.TestCase):
         """Setup for dosctring"""
         self.base_f = inspect.getmembers(BaseModel, inspect.isfunction)
 
+<<<<<<< HEAD
+=======
     # def testing_pep8(self):
     # """testing that BaseModel.py passes pep8"""
     # for path in ['models/base_model.py',
@@ -27,6 +42,7 @@ class TestDocs(unittest.TestCase):
     # err = pycodestyle.Checker(path).check_all()
     # self.assertEqual(err, 0)
 
+>>>>>>> c0468ff8e49bdfade83cea54116ee7827bea2566
     def test_module_docstring(self):
         """Test for the existence of module docstring"""
         self.assertIsNot(mod_doc, None,

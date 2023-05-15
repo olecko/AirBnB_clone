@@ -1,7 +1,10 @@
 #!/usr/bin/python3
 """Test User Class - Comproving expectect outputs and documentation
 """
+<<<<<<< HEAD
+=======
 
+>>>>>>> c0468ff8e49bdfade83cea54116ee7827bea2566
 from datetime import datetime
 import models
 import pep8
@@ -77,8 +80,12 @@ class TestBaseModel(unittest.TestCase):
         created_at = datetime.now()
         instance1 = Amenity()
         updated_at = datetime.now()
+<<<<<<< HEAD
+        self.assertEqual(created_at <= instance1.created_at <= updated_at, True)
+=======
         self.assertEqual(created_at <= instance1.created_at
                          <= updated_at, True)
+>>>>>>> c0468ff8e49bdfade83cea54116ee7827bea2566
         time.sleep(1)
         created_at = datetime.now()
         instance2 = Amenity()
