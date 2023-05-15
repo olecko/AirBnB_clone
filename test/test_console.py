@@ -9,7 +9,11 @@ from io import StringIO
 import os
 import json
 import console
+<<<<<<< HEAD
 import test
+=======
+import tests
+>>>>>>> c0468ff8e49bdfade83cea54116ee7827bea2566
 from console import HBNBCommand
 from models.base_model import BaseModel
 from models.user import User

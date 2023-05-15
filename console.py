@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+Class CommandConsole for Airbnb
+"""
 import cmd
 import sys
 from datetime import datetime
@@ -144,7 +147,6 @@ class HBNBCommand(cmd.Cmd):
         "count instances of the class"
 
         cmd_line = arg.split()
-
         if cmd_line[0] not in allowed_class:
             return
         else:
@@ -161,7 +163,6 @@ class HBNBCommand(cmd.Cmd):
         if self.file:
             self.file.close()
             self.file = None
-
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
