@@ -3,38 +3,37 @@
 Class BaseModel
 """
 
+from uuid import uuid4
 from datetime import datetime
-import uuid
 import models
-# dtm = date format
-dtm = "%Y-%m-%dT%H:%M:%S.%f"
+
+# dfm = date format
+dfm = "%Y-%m-%dT%H:%M:%S.%f"
 
 
 class BaseModel:
     """Base Model"""
 
     def __init__(self, *args, **kwargs):
-        """Initialize a BaseModel"""
         if kwargs:
-            for key, val in kwargs.items():
+            for key, value in kwargs.items():
                 if key != '__class__':
-                    setattr(self, key, val)
-            
-                self.created_at = datetime.strptime(kwargs["created_at"], dtm)
+                    setattr(self, key, value)
+            if hasattr(self, 'created_at') and type(self.created_at) is str:
+                self.created_at = datetime.strptime(kwargs["created_at"], dfm)
             if hasattr(self, 'updated_at') and type(self.updated_at) is str:
-                self.updated_at = datetime.strptime(
-                    kwargs["updated_at"], dtm)
-
+                self.created_at = datetime.strptime(kwargs["updated_at"], dfm)
         else:
-            self.id = str(uuid.uuid4())
-            self.created_at = datetime.now()
+            self.id = str(uuid4())
+            self.created_at = str(datetime.now())
             self.updated_at = self.created_at
             models.storage.new(self)
 
     def __str__(self):
         """str representation"""
-        return "[{:s}] ({:s}) {}".format(self.__class__.__name__, self.id,
-                                         self.__dict__)
+        s_dict = self.__dict__
+        s_id = self.id
+        return "[{:s}] ({:s}) {}".format(self.__class__.__name__, s_id, s_dict)
 
     def save(self):
         """updates the public ins attr upd_at with the curren one"""
@@ -43,10 +42,11 @@ class BaseModel:
 
     def to_dict(self):
         """ returns a dic containing keys and values of the instance"""
-        n_dict = self.__dict__.copy()
-        if "created_at" in n_dict:
-            n_dict["created_at"] = n_dict["created_at"].strftime(dtm)
-        if "updated_at" in n_dict:
-            n_dict["updated_at"] = n_dict["updated_at"].strftime(dtm)
-        n_dict["__class__"] = self.__class__.__name__
-        return n_dict
+
+        x_dict = self.__dict__.copy()
+        if "created_at" in x_dict:
+            x_dict["created_at"] = x_dict["created_at"].strftime(dfm)
+        if "updated_at" in x_dict:
+            x_dict["updated_at"] = x_dict["created_at"].strftime(dfm)
+        x_dict["__class__"] = self.__class__.__name__
+        return x_dict
