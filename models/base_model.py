@@ -2,6 +2,7 @@
 """
 Class BaseModel
 """
+
 from uuid import uuid4
 from datetime import datetime
 import models
@@ -41,6 +42,7 @@ class BaseModel:
 
     def to_dict(self):
         """ returns a dic containing keys and values of the instance"""
+
         x_dict = self.__dict__.copy()
         if "created_at" in x_dict:
             x_dict["created_at"] = x_dict["created_at"].strftime(dfm)
